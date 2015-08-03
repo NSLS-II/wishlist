@@ -1,0 +1,35 @@
+1. Diagram on motor movements with respect to beam direction
+  (for example, we had to keep track of which motor direction moved the beamstop where.
+    it would be nice not to have to)
+2. Instantaneous circular average for isotropic data.
+3. Mask creator to allow for the loading of a better mask for circular average. The idea would be to create it in real time
+  using ophyd. Perhaps give each detector object a routine such as "eiger.cmask()" , "eiger.lmask()" (create/load mask), 
+  where the former would be a GUI.
+  The GUI should allow creation of boxes and ellipses and allow the user to stretch and rotate them would be great.
+  Also, something that would allow the use to click their own polygon. You might have a better idea :-)
+4. Instantaneous measurement of contrast versus q for counting area detectors from one image.
+      Eiger counts photons so this should be easy. Formula 1 from here: http://journals.aps.org/prl/pdf/10.1103/PhysRevLett.109.185502
+       Only issue is the average count rate needs to be the same for the region averaged over but this could be done with a glass.
+       (I think Andre is more an expert on this than I am though :-) )
+5. Method to play back time series just after image is taken
+6. Have each measurement logged into the system when it is taken, as well come with 
+  some easy method to retrieve all motor positions during the time it was taken
+7. Fast shutter w/ way to control via ophyd (pretty sure you're already working on this)
+8. A way to view a histogram of custom regions.
+9. A radiation-proof suit so that we may place Lutz as close to the experiments as possible for good luck.
+
+Comments: I think some of these ideas can maybe be merged together. Maybe into:
+  1. A general tool to create regions (boxes, ellipses, annuli, 1-pixel segments)
+  2. A general tool to divide these regions into subregions with identifier numbers
+      (choose a min, max x,y pair and choose a number of subdivisions. Also (q,phi) pair)
+      This is refered to as np.digitize however last I checked np.searchsorted is faster (digitize does linear search
+          whereas searchsorted is binary, exponentially faster)
+  3. Expandable plugins for these regions with their identifier numbers:
+    a. turn region into a binary mask the size of the image (for us to save for the future)
+    b. histogram a region over all identifier numbers
+    c. average of digitized region versus identifier number (i.e. circular average if identifiers go as q)
+    d. fitting of histogram of digitized subregions, return fitted parameters versus identifier number
+      (contrast etc)
+    e. fitting the beam to a Gaussian (i.e. select a square region, where the beam is approx centered, select the center as
+      initial fit parameter)
+    
