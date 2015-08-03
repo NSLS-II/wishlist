@@ -8,7 +8,7 @@
   The GUI should allow creation of boxes and ellipses and allow the user to stretch and rotate them would be great.
   Also, something that would allow the use to click their own polygon. You might have a better idea :-)
 4. Instantaneous measurement of contrast versus q for counting area detectors from one image.
-      Eiger counts photons so this should be easy. Formula 1 from here: http://journals.aps.org/prl/pdf/10.1103/PhysRevLett.109.185502
+      Eiger counts photons so this should be easy. Formula 11 from here: http://scripts.iucr.org/cgi-bin/paper?gb5023
        Only issue is the average count rate needs to be the same for the region averaged over but this could be done with a glass.
        (I think Andre is more an expert on this than I am though :-) )
 5. Method to play back time series just after image is taken
